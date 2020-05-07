@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CameraToolsPlugin", "Mods\CameraToolsPlugin\CameraToolsPlugin\CameraToolsPlugin.csproj", "{461CF153-4423-4BC2-B10D-0DB24D5B6E1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DontAnnoyBaggers", "Mods\DontAnnoyBaggers\DontAnnoyBaggers.csproj", "{F786C502-ADC7-4C7E-A0FF-059C798C454D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToggleCharacterNames", "Mods\ToggleCharacterNames\ToggleCharacterNames.csproj", "{0FA94683-146E-4EAC-95A3-CCAF9933065D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{461CF153-4423-4BC2-B10D-0DB24D5B6E1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{461CF153-4423-4BC2-B10D-0DB24D5B6E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{461CF153-4423-4BC2-B10D-0DB24D5B6E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{461CF153-4423-4BC2-B10D-0DB24D5B6E1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F786C502-ADC7-4C7E-A0FF-059C798C454D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F786C502-ADC7-4C7E-A0FF-059C798C454D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F786C502-ADC7-4C7E-A0FF-059C798C454D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F786C502-ADC7-4C7E-A0FF-059C798C454D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FA94683-146E-4EAC-95A3-CCAF9933065D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FA94683-146E-4EAC-95A3-CCAF9933065D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FA94683-146E-4EAC-95A3-CCAF9933065D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FA94683-146E-4EAC-95A3-CCAF9933065D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3AB9696-650E-45D3-9F7D-50426F74D917}
+	EndGlobalSection
+EndGlobal

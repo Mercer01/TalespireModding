@@ -81,8 +81,8 @@ namespace CameraToolsPlugin
                     {
 
                         var cam = CameraController.Instance;
-                        cam.GetType().GetField("_minTilt", flags)?.SetValue(cam, 0.0f);
-                        cam.GetType().GetField("_maxTilt", flags)?.SetValue(cam, 120.0f);
+                        cam.GetType().GetField("_minTilt", flags)?.SetValue(cam, 90.0f);
+                        cam.GetType().GetField("_maxTilt", flags)?.SetValue(cam, 90.0f);
                         //cam.GetType().GetField("_maxFov", flags).SetValue(cam, 120.0f);
                         this._orthEnabled = true;
                     }
@@ -145,16 +145,17 @@ namespace CameraToolsPlugin
             {
                 toggleOrthographicCamera();
             }
+            if(Input.GetKeyUp(KeyCode.Tab))
 
             if(_orthEnabled)
             {
                 if (Input.GetAxis("Mouse ScrollWheel") > 0)
                 {
-                    Camera.main.orthographicSize -= .25f;
+                    Camera.main.orthographicSize -= 1f;
                 }
                 else if (Input.GetAxis("Mouse ScrollWheel") < 0)
                 {
-                    Camera.main.orthographicSize += .25f;
+                    Camera.main.orthographicSize += 1f;
                     
                 }
             }
