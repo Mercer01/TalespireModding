@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Reflection;
 using BepInEx;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 namespace CameraToolsPlugin
 {
-    [BepInPlugin("org.mercer.plugins.CameraTools", "Camera Tools", "1.0.0.0")]
+    [BepInPlugin("org.mercer.plugins.CameraTools", "Camera Tools", "1.1.0")]
     [BepInProcess("TaleSpire.exe")]
     public class CameraTools : BaseUnityPlugin
     {
@@ -145,8 +147,7 @@ namespace CameraToolsPlugin
             {
                 toggleOrthographicCamera();
             }
-            if(Input.GetKeyUp(KeyCode.Tab))
-
+            
             if(_orthEnabled)
             {
                 if (Input.GetAxis("Mouse ScrollWheel") > 0)
@@ -157,6 +158,34 @@ namespace CameraToolsPlugin
                 {
                     Camera.main.orthographicSize += 1f;
                     
+                }
+            }
+        }
+
+        void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            UnityEngine.Debug.Log("Loading Scene: " + scene.name);
+            TextMeshProUGUI[] texts = FindObjectsOfType<TextMeshProUGUI>();
+
+            foreach (var t in texts)
+            {
+                if (scene.name == "UI" && t.name == "BETA")
+                {
+                    t.text = "INJECTED BUILD - unstable mods";
+                }
+                if (scene.name == "Login" && t.name == "TextMeshPro Text")
+                {
+                    BepInPlugin bepInPlugin = (BepInPlugin)Attribute.GetCustomAttribute(this.GetType(), typeof(BepInPlugin));
+                    if (t.text.EndsWith("</size>"))
+                    {
+                        t.text += "\n\nMods Currently Installed:\n";
+                    }
+                    t.text += "\n" + bepInPlugin.Name + " - " + bepInPlugin.Version;
                 }
             }
         }
