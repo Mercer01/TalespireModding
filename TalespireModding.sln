@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DontAnnoyBaggers", "Mods\Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToggleCharacterNames", "Mods\ToggleCharacterNames\ToggleCharacterNames.csproj", "{0FA94683-146E-4EAC-95A3-CCAF9933065D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchCharacters", "Mods\SwitchCharacters\SwitchCharacters.csproj", "{E128D0B5-5F0F-474E-B9A7-C9BA92AAA9FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0FA94683-146E-4EAC-95A3-CCAF9933065D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FA94683-146E-4EAC-95A3-CCAF9933065D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FA94683-146E-4EAC-95A3-CCAF9933065D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E128D0B5-5F0F-474E-B9A7-C9BA92AAA9FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E128D0B5-5F0F-474E-B9A7-C9BA92AAA9FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E128D0B5-5F0F-474E-B9A7-C9BA92AAA9FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E128D0B5-5F0F-474E-B9A7-C9BA92AAA9FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

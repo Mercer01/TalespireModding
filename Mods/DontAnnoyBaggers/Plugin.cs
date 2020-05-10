@@ -1,14 +1,13 @@
 ﻿using BepInEx;
-using UnityEngine;
 using System;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-namespace CameraToolsPlugin
+namespace DontAnnoyBaggers
 {
     [BepInPlugin("org.generic.plugins.setInjectionFlag", "Set Injection Flag", "1.0.0")]
     [BepInProcess("TaleSpire.exe")]
-    class setInjectionFlag : BaseUnityPlugin
+    class SetInjectionFlag : BaseUnityPlugin
     {
         void Awake()
         {
