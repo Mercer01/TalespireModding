@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 namespace CameraToolsPlugin
 {
-    [BepInPlugin("org.mercer.plugins.CameraTools", "Camera Tools", "1.1.0")]
+    [BepInPlugin("org.mercer.plugins.CameraTools", "Camera Tools", "1.2.0")]
     [BepInProcess("TaleSpire.exe")]
     public class CameraTools : BaseUnityPlugin
     {
@@ -16,18 +16,22 @@ namespace CameraToolsPlugin
         private bool _enabled = false;
         private bool _orthEnabled = false;
 
-        const BindingFlags flags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Static;
+        const BindingFlags flags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic |
+                                   BindingFlags.Static;
+
         // Awake is called once when both the game and the plug-in are loaded
         void Awake()
         {
             UnityEngine.Debug.Log("Camera Tool loaded");
+            ModdingTales.ModdingUtils.Initialize(this);
         }
 
         private void ToggleCamera()
         {
             try
             {
-                if (!_enabled) {
+                if (!_enabled)
+                {
                     UnityEngine.Debug.Log("The Cam overrides are disabled enabling!");
 
                     if (!CameraController.HasInstance) return;
@@ -68,13 +72,13 @@ namespace CameraToolsPlugin
             }
         }
 
-        private void toggleOrthographicCamera()
+        private void ToggleOrthographicCamera()
         {
             try
             {
                 if (!_orthEnabled)
                 {
-                    UnityEngine.Debug.Log("The Orthographic overrides are disabled enabling!");
+                    Debug.Log("The Orthographic overrides are disabled enabling!");
 
                     Camera.main.orthographic = true;
                     Camera.main.orthographicSize = 50.0f;
@@ -88,6 +92,7 @@ namespace CameraToolsPlugin
                         //cam.GetType().GetField("_maxFov", flags).SetValue(cam, 120.0f);
                         this._orthEnabled = true;
                     }
+
                     if (SingletonBehaviour<AtmosphereManager>.HasInstance)
                     {
                         var atm = SingletonBehaviour<AtmosphereManager>.Instance;
@@ -97,7 +102,7 @@ namespace CameraToolsPlugin
                         {
                             if (field.Name == "_applier")
                             {
-                                aa = (AtmosphereApplier)field.GetValue(atm);
+                                aa = (AtmosphereApplier) field.GetValue(atm);
                                 //UnityEngine.Debug.Log("Aperture Min: " + t.FieldType.GetField("_dofApertureMin", flags).GetValue(aa));
                                 //UnityEngine.Debug.Log("Aperture Max: " + t.FieldType.GetField("_dofApertureMax", flags).GetValue(aa));
                                 field.FieldType.GetField("_dofApertureMin", flags)?.SetValue(aa, 0.0f);
@@ -143,12 +148,13 @@ namespace CameraToolsPlugin
             {
                 ToggleCamera();
             }
+
             if (Input.GetKeyUp(KeyCode.F6))
             {
-                toggleOrthographicCamera();
+                ToggleOrthographicCamera();
             }
-            
-            if(_orthEnabled)
+
+            if (_orthEnabled)
             {
                 if (Input.GetAxis("Mouse ScrollWheel") > 0)
                 {
@@ -157,35 +163,7 @@ namespace CameraToolsPlugin
                 else if (Input.GetAxis("Mouse ScrollWheel") < 0)
                 {
                     Camera.main.orthographicSize += 1f;
-                    
-                }
-            }
-        }
 
-        void OnEnable()
-        {
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
-
-        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            UnityEngine.Debug.Log("Loading Scene: " + scene.name);
-            TextMeshProUGUI[] texts = FindObjectsOfType<TextMeshProUGUI>();
-
-            foreach (var t in texts)
-            {
-                if (scene.name == "UI" && t.name == "BETA")
-                {
-                    t.text = "INJECTED BUILD - unstable mods";
-                }
-                if (scene.name == "Login" && t.name == "TextMeshPro Text")
-                {
-                    BepInPlugin bepInPlugin = (BepInPlugin)Attribute.GetCustomAttribute(this.GetType(), typeof(BepInPlugin));
-                    if (t.text.EndsWith("</size>"))
-                    {
-                        t.text += "\n\nMods Currently Installed:\n";
-                    }
-                    t.text += "\n" + bepInPlugin.Name + " - " + bepInPlugin.Version;
                 }
             }
         }

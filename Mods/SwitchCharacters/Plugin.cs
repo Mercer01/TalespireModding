@@ -15,6 +15,7 @@ namespace SwitchCharacters
         void Awake()
         {
             UnityEngine.Debug.Log("SwitchCharacters Plugin loaded");
+            ModdingTales.ModdingUtils.Initialize(this);
         }
 
         private void Update()
@@ -41,34 +42,6 @@ namespace SwitchCharacters
                     }
                 }
                 CameraController.LookAtCreature(LocalClient.SelectedCreatureId);
-            }
-        }
-
-        void OnEnable()
-        {
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
-
-        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            UnityEngine.Debug.Log("Loading Scene: " + scene.name);
-            TextMeshProUGUI[] texts = FindObjectsOfType<TextMeshProUGUI>();
-
-            foreach (var t in texts)
-            {
-                if (scene.name == "UI" && t.name == "BETA")
-                {
-                    t.text = "INJECTED BUILD - unstable mods";
-                }
-                if (scene.name == "Login" && t.name == "TextMeshPro Text")
-                {
-                    BepInPlugin bepInPlugin = (BepInPlugin)Attribute.GetCustomAttribute(this.GetType(), typeof(BepInPlugin));
-                    if (t.text.EndsWith("</size>"))
-                    {
-                        t.text += "\n\nMods Currently Installed:\n";
-                    }
-                    t.text += "\n" + bepInPlugin.Name + " - " + bepInPlugin.Version;
-                }
             }
         }
     }

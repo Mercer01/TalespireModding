@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace ToggleCharacterNames
+namespace KeybindingAtmosphereControls
 {
     [BepInPlugin("org.mercer.plugins.ToggleCharacterNames", "Toggle Character Names", "1.2.0")]
     [BepInProcess("TaleSpire.exe")]
